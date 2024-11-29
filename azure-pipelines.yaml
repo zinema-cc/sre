@@ -1,0 +1,19 @@
+trigger:
+- main
+
+resources:
+- repo: self
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: Bash@3
+      displayName: Build an image
+      inputs:
+        command: ansible --version
